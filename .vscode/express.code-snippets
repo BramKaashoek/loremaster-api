@@ -1,0 +1,14 @@
+{
+  "express endpoint": {
+    "prefix": "endpoint",
+    "body": [
+      "import * as express from 'express'",
+      "",
+      "const router = express.Router()",
+      "",
+      "router.get('/', (req, res, next) => {",
+      "   res.status(200).send('endpoint up')",
+      "})"
+    ]
+  }
+}

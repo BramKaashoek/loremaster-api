@@ -1,0 +1,35 @@
+{
+  "name": "loremaster-api",
+  "version": "0.0.1",
+  "main": "build/index.js",
+  "scripts": {
+    "start-db": "docker run -p 5432:5432 --name postgresdb -e POSTGRES_PASSWORD=postgres_password -d postgres",
+    "stop-db": "docker rm -f postgresdb",
+    "start": "concurrently -k -p \"[{name}]\" -n \"Typescript, Node\" -c \"yellow.bold,cyan.bold\" \"tsc -w\" \"nodemon build/index.js\" "
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.2",
+    "concurrently": "^4.1.0",
+    "jsonwebtoken": "^8.4.0",
+    "kcors": "^2.2.2",
+    "koa": "^2.6.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-multer": "^1.0.2",
+    "koa-router": "^7.4.0",
+    "nodemon": "^1.18.7",
+    "pg": "^7.4.1",
+    "routing-controllers": "^0.7.7",
+    "tslint": "^5.11.0",
+    "typeorm": "0.2.9",
+    "typescript": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^1.0.0",
+    "@types/jsonwebtoken": "^7.2.6",
+    "@types/koa": "^2.0.44",
+    "@types/koa-bodyparser": "^4.2.0",
+    "@types/koa-multer": "^1.0.0",
+    "@types/koa-router": "^7.0.27",
+    "@types/pg": "^7.4.11"
+  }
+}

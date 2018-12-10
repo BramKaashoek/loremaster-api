@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es2017",
+    "noImplicitAny": false,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "skipLibCheck": false,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "types": ["node"],
+    "typeRoots": ["node_modules/@types"],
+    "outDir": "build/",
+    "rootDir": "src/"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"],
+  "typeRoots": ["node_modules/@types"],
+  "compileOnSave": true
+}
