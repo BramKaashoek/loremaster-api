@@ -5,13 +5,13 @@ import User from "./entity";
 export default class UserController {
   @Post("/users")
   async signUp(@Body() data: User) {
-    console.log("post");
     const { password, ...rest } = data;
     if (await User.findOne({ where: { email: data.email } })) throw new BadRequestError("email already in use");
 
     const entity = User.create(rest);
     await entity.setPassword(password);
-    return await entity.save();
+    const user = await entity.save();
+    return user;
   }
 
   @Get("/users/:id")

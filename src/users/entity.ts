@@ -1,10 +1,4 @@
-import {
-  Entity,
-  BaseEntity,
-  PrimaryGeneratedColumn,
-  Column,
-  Unique
-} from "typeorm";
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, Unique } from "typeorm";
 import { IsEmail, IsString } from "class-validator";
 import { Exclude } from "class-transformer";
 import * as bcrypt from "bcrypt";
@@ -21,7 +15,7 @@ export default class User extends BaseEntity {
 
   @IsString()
   @Column("text")
-  @Exclude({ toPlainOnly: true })
+  @Exclude()
   password: string;
 
   async setPassword(plainPassword: string) {
