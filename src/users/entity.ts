@@ -1,7 +1,8 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, Unique } from "typeorm";
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, Unique, ManyToMany, JoinTable } from "typeorm";
 import { IsEmail, IsString } from "class-validator";
 import { Exclude } from "class-transformer";
 import * as bcrypt from "bcrypt";
+import Campaign from "../campaigns/entity";
 
 @Entity()
 @Unique(["email"])
@@ -15,8 +16,12 @@ export default class User extends BaseEntity {
 
   @IsString()
   @Column("text")
-  @Exclude()
+  @Exclude({ toPlainOnly: true })
   password: string;
+
+  @ManyToMany(_ => Campaign)
+  @JoinTable()
+  campaigns: Campaign[];
 
   async setPassword(plainPassword: string) {
     const hash = await bcrypt.hash(plainPassword, 10);

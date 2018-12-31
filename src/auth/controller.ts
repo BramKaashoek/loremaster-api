@@ -14,9 +14,9 @@ export default class AuthController {
     console.log(`post auth ${email}`);
     const user = await User.findOne({ where: { email } });
 
-    if (!user || !user.id) throw new BadRequestError("User does not exist.");
+    if (!user || !user.id) throw new BadRequestError("userNotFound.");
 
-    if (!(await user.checkPassword(password))) throw new BadRequestError("Incorrect password.");
+    if (!(await user.checkPassword(password))) throw new BadRequestError("wrongPassword");
 
     const jwt = jwtHandler.sign({ id: user.id });
     return { jwt, id: user.id };
