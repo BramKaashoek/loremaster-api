@@ -11,9 +11,11 @@ export default class CampaignController {
     console.log(`Post Campaign ${data.name}`);
     const entity = Campaign.create(data);
     const campaign = await entity.save();
-    user.campaigns = [...user.campaigns, campaign];
+    console.log(user);
+    await user.addCampaign(campaign);
+    console.log(user);
     await user.save();
-
+    console.log("user saved");
     return campaign;
   }
 }

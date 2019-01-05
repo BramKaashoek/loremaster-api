@@ -9,8 +9,8 @@ export default class UserController {
     console.log(`Post Users ${data.email}`);
     const { password, ...rest } = data;
     if (await User.findOne({ where: { email: data.email } })) throw new BadRequestError("emailInUse");
-
-    const entity = User.create(rest);
+    const user = { ...rest, campaigns: [] };
+    const entity = User.create(user);
     await entity.setPassword(password);
     return await entity.save();
   }

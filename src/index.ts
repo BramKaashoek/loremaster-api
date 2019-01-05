@@ -34,8 +34,7 @@ useKoaServer(app, {
     const authHeader: string = action.request.headers.authorization;
     if (authHeader && authHeader.startsWith("Bearer ")) {
       const [, token] = authHeader.split(" ");
-      const id = jwt.verify(token);
-      console.log(id);
+      const { id } = jwt.verify(token);
       return User.findOne({ where: { id } });
     }
     return undefined;
